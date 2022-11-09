@@ -1,0 +1,94 @@
+\chapter{Homolog\'ia Persistente}
+
+La homolog\'ia persistente es una herramienta poderosa que es usada para el computo, estudio y codificaci\'on
+multiescala de propiedades topol\'ogicas de familias anidadas de complejos simpliciales y espacios
+topol\'ogicos. No solo provee algoritmos eficientes para calcular los n\'umeros de Betti de cada complejo
+en las familias consideradas, como se requiere para la inferencia homol\'ogica cubierta en la secci\'on
+anterior, sino que tambi\'en codifica la evoluci\'on de los grupos de homolog\'ia de los
+complejos anidados a trav\'es de las escalas. Ideas y resultados preliminares que culminan en la
+teor\'ia de la homolog\'ia persistente pueden ser encontrados desde antes del siglo XXI, en particular
+en los trabajos de Barannikov (1994) \cite{Barannikov1994}, Frosini (1992) \cite{Frosini1992},
+Robins (1999) \cite{Robins1999}; pero su desarrollo en su forma moderna se concreto en los trabajos
+de Edelsbrunner et al. (2002) \cite{Edelsbrunner2002} y Zomorodian y Carlsson (2005)
+\cite{Zomorodian2005}.
+
+\section{Filtraciones}
+
+Una filtraci\'on de un complejo simplicial $K$ es una familia anidada de subcomplejos
+$\cpar{K_{r}}_{r\in t}$, donde $T\subseteq\mathbb{R}$, tal que para cualquier
+$r, r' \in T$, si $r\leq r'$ entonces $K_{r}\subseteq K_{r'}$ y $K = \bigcup_{r\in T}K_{r}$.
+El subconjunto $T$ puede ser finito o infinito. En general, una filtraci\'on de un espacio
+topol\'ogico $\mathbb{M}$ es una familia anidada de subespacios $\cpar{M_{r}}_{r\in T}$,
+donde $T\subseteq\mathbb{R}$, tal que para cualquier $r, r' \in T$,
+si $r\leq r'$ entonces $M_{r}\subseteq M_{r'}$ y $M = \bigcup_{r\in T}M_{r}$. Por ejemplo, si
+$f: \mathbb{M}\rightarrow\mathbb{R}$ es una funci\'on, entonces la familia
+$M_{r} = f^{-1}\cpar{\left(-\infty, r\right]}$, $r\in\mathbb{R}$ define una filtraci\'on llamada la
+filtraci\'on del conjunto subnivel de $f$.
+
+En la pr\'actica, el par\'ametro $r\in T$ suele ser interpretado como un par\'ametro de escala, y las
+filtraciones com\'unmente usadas en el ATD suelen pertenecer a uno de los siguientes dos tipos.
+
+\section*{Filtraciones Sobre Datos}
+
+Dado un subconjunto $\mathbb{X}$ de un espacio m\'etrico compacto $\cpar{M,\rho}$, las familias de
+complejos de Vietoris-Rips $\cpar{Rips_{r}\cpar{\mathbb{X}}}_{r\in\mathbb{R}}$ y los complejos de \v Cech
+$\cpar{Cech_{r}\cpar{\mathbb{X}}}_{r\in\mathbb{R}}$ son filtraciones\footnote{Aqu\'i consideramos
+$Rips_{r}\cpar{\mathbb{X}} = Cech_{r}\cpar{\mathbb{X}} = \varnothing$, si $r<0$}. Aquí, el par\'ametro
+$r$ puede ser interpretado como la resoluci\'on con la que se considera el conjunto de datos $\mathbb{X}$.
+Por ejemplo, si $\mathbb{X}$, es una nube de puntos en $\mathbb{R}^{d}$, gracias al teorema del nervio,
+la filtraci\'on $\cpar{Cech_{r}\cpar{\mathbb{X}}}_{r\in\mathbb{X}}$ codifica la topolog\'ia de todo la
+familia de uniones de bolas $\mathbb{X}^{r} = \cup_{x\in\mathbb{X}}B\cpar{x,r}$, cuando $0<r<\infty$.
+Como la noci\'on de filtraci\'on es algo flexible, se han considerado muchas otras filtraciones en la
+literatura para ser construidas sobre los datos, como el complejo testigo popularizado en el ATD por
+De Silva y Carlsson (2004)\cite{DeSilva2004}, las filtraciones de Rips con peso Buchet et al.
+(2015)\cite{Buchet2015b}, o las filtraciones DTM Anai et al. (2019)\cite{Anai2019} que nos permiten
+trabajar con conjuntos de datos con ruido o con datos at\'ipicos.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\linewidth]{./figures/Figura9.png}
+    \caption{
+        El c\'odigo de barras de persistencia y el diagrama de persistencia de la funci\'on
+        $f:\ccorch{0,1}\rightarrow\mathbb{R}$.
+    }
+    \label{fig:Figura 9}
+    \vspace{15pt}
+\end{figure}
+
+\section*{Filtraciones de Conjuntos Subnivel}
+
+Definir funciones en los v\'ertices de un complejo simplicial da lugar a otro importante ejemplo de
+filtraci\'on: sea $K$ el complejo simplicial con el conjunto de v\'ertices $V$ y
+$f:V\rightarrow\mathbb{R}$. Entonces $f$ puede ser extendida a todos los simplices de $K$ definiendo
+$f\cpar{\ccorch{v_{0},\dots,v_{k}}} = \max\cllav{f\cpar{v_{i}}: i=1,\dots,k}$ para cualquier simplejo
+$\sigma = \ccorch{v_{0},\dots,v_{k}}\in K$ y la familia de subcomplejos,
+$K_{r}=\cllav{\sigma\in K:f\cpar{\sigma}\leq r}$, define una filtraci\'on llamada la filtraci'on del
+conjunto subnivel de $f$. La filtraci\'on del conjunto sobre-nivel de $f$ se define de manera similar.
+
+En la pr\'actica, incluso si el \'indice del conjunto es infinito, todas las filtraciones consideradas
+son construidas en conjuntos finitos y son, en si, finitas. Por ejemplo, cuando $\mathbb{X}$ es finito,
+el complejo de Vietoris-Rips $Rips_{r}\cpar{\mathbb{X}}$ cambia solo en un numero finito de \'indices,
+$r$. Esto nos permite manejarlos de manera sencilla desde una perspectiva algebraica.
+
+\section{Algunos Ejemplos}
+
+Dada una filtraci\'on $\mathit{Filt} = \cpar{F_{r}}_{r\in T}$ de un complejo simplicial o un espacio
+topol\'ogico, la homolog\'ia de $F_{r}$ cambia cuando $r$ incrementa; pueden aparecen nuevos componentes
+conexos y algunos ya existentes pueden unirse, aros y cavidades pueden formarse o llenarse, etc. La
+homolog\'ia persistente registra estos cambios, identifica las propiedades que aparecen y asocia un
+tiempo de vida a cada una. La informaci\'on resultante se codifica como un conjunto de intervalos llamado
+c\'odigo de barras, o bien, como un conjunto de puntos en $\mathbb{R}^{2}$ donde la coordenada de
+cada punto es el punto de inicio y final de cada intervalo correspondiente.
+
+Antes de dar una definici\'on formal, ilustraremos el concepto de homolog\'ia persistente con unos
+ejemplos.
+
+% IDE Change, change to hard-wrapping per sentence instead of hard-wrapping per max number of char.
+
+\section*{Ejemplo 1}
+
+Sea $f:\ccorch{0,1}\rightarrow\mathbb{R}$ la funci\'on de la Figura \ref{fig:Figura 9},
+y sea $F_{r} = f^{-1}\cpar{\cpar{-\infty,r}}_{r\in\mathbb{R}}$ la filtraci\'on del conjunto subnivel de $f$.
+Todos los conjuntos subnivel de $f$ son o bien vacios o la uni\'on de intervalos,
+as\'i que la \'unica informaci\'on topol\'ogica no-trivial que brindan es su homolog\'ia cero dimensional, esto es, su n\'umero de componenetes conexas.
+Para $r<a_{1}$, $F_{r}$ es vacia, pero para $r = a_{1}$, aparecen un primer componente conexo en $F_{a_{1}}$.

@@ -1,0 +1,154 @@
+\addcontentsline{toc}{chapter}{Introducci\'on}
+\chapter*{Introducci\'on}
+%\fancyhf{}
+%\rhead{INTRODUCCI\'ON}
+
+El an\'alisis topol\'ogico de datos (ATD) es un campo reciente 
+que emerge de varios trabajos en topolog\'ia (algebraica) aplicada
+y la geometr\'ia computacional durante la primera d\'ecada del siglo \textbf{XXI}. Aunque
+es posible encontrarse con acercamientos geom\'etricos al
+an\'alisis de datos desde mucho antes, el ATD comenz\'o a desarrollarse
+como un campo con los trabajos de Edelsbrunner et al. (2002) \cite{Edelsbrunner2002} y
+Zomorodian y Carlsson (2005) \cite{Zomorodian2005} en homolog\'ia persistente, el campo fue
+popularizado en un destacado art\'iculo en 2009 \cite{Carlsson2005}.
+El ATD es motivado principalmente por la idea que la topolog\'ia y la
+geometr\'ia brindan un acercamiento poderoso para inferir de manera robusta
+caracter\'isticas cualitativas y cuantitativas sobre la estructura
+de un conjunto de datos [e.g., Chazal (2017) \cite{Chazal2017}].
+
+El objetivo del ATD es generar m\'etodos matem\'aticos, estad\'isticos y algor\'itmicos
+bien fundamentados para inferir, analizar y explotar las complejas estructuras topol\'ogicas
+y geom\'etricas subyacentes a datos que usualmente son representados como nubes de puntos en
+espacios Euclideanos o espacios m\'etricos m\'as generales. En el transcurso de los \'ultimos
+a\~{n}os se ha realizado un esfuerzo considerable para proporcionar estructuras de datos robustas
+y eficientes, adem\'as de algoritmos para ATD que actualmente son implementados y
+facilitados a trav\'es de paqueter\'ias est\'andar como la paqueter\'ia
+GUDHI\footnote{https://gudhi.inria.fr/} (C++ y Python) Maria et al. (2014) \cite{Maria2014} y su
+interfaz para el software R, Fasy et al. (2014a) \cite{Fasy2014a},
+Dionysus\footnote{https://www.mrzv.org/software/dionysus/},
+PHAT\footnote{https://bitbucket.org/phat-code/phat},
+DIPHA\footnote{https://github.com/DIPHA/dipha} o
+Giotto\footnote{https://giotto-ai.github.io/gtda-docs/0.4.0/library.html}.
+Aunque evoluciona con rapidez, el ATD proporciona un conjunto de herramientas maduras y
+eficientes que pueden ser usadas de manera complementaria o conjunta a otras herramientas
+de la ciencia de datos.
+
+\section*{Estructura General del An\'alisis Topol\'ogico de Datos}
+
+El ATD se ha desarrollado recientemente en m\'ultiples direcciones y campos de aplicaci\'on.
+Actualmente existe una variedad de m\'etodos inspirados por acercamientos topol\'ogicos y
+geom\'etricos. Dar un resumen que cubra con entereza de los acercamientos
+existentes se encuentra fuera del alcance de esta introducci\'on. Sin embargo, muchos m\'etodos
+est\'andar siguen la siguiente secuencia:
+
+\begin{enumerate}
+    \item Suponemos que la entrada de datos es un conjunto finito de puntos con una noci\'on
+    de distancia o similitud entre ellos. Esta puede ser inducida por una m\'etrica en el
+    espacio de entrada (e.g. la m\'etrica Euclidiana si se trata de datos inmersos en
+    $\mathbb{R}^{d}$) o ser una m\'etrica intr\'inseca definida por una matriz de distancia
+    por pares. La definici\'on de la m\'etrica en los datos normalmente es parte de la entrada
+    o es guiada por la aplicaci\'on. No obstante, es importante notar que la elecci\'on de
+    dicha m\'etrica puede ser cr\'itica para revelar caracter\'isticas topol\'ogicas y
+    geom\'etricas interesantes de los datos.
+    
+    \item Se construye una figura ``continua'' sobre los datos con el prop\'osito de resaltar
+    las estructuras topol\'ogicas y geom\'etricas subyacentes. Usualmente se trata de
+    un complejo simplicial o una familia anidada de complejos simpliciales, llamada filtraci\'on,
+    la cual refleja la estructura de los datos en diferentes escalas. Los complejos simpliciales
+    pueden ser vistos como generalizaciones de gr\'aficas vecinales que cl\'asicamente son
+    construidas sobre los datos en muchos tipos de an\'alisis o algoritmos de aprendizaje.
+    El desaf\'io aqu\'i es definir tales estructuras de tal manera que sean capaces de
+    reflejar informaci\'on relevante acerca de la estructura de los datos y que puedan ser
+    construidas de manera efectiva y manipuladas en la pr\'actica.
+    
+    \item Informaci\'on topol\'ogica y geom\'etrica es extra\'ida de las estructuras construidas
+    sobre los datos. Esto puede resultar en una reconstrucci\'on completa, t\'ipicamente una
+    triangulaci\'on, de la forma subyacente de los datos de los cuales se pueden extraer
+    f\'acilmente propiedades topol\'ogicas y geom\'etricas en forma de res\'umenes o
+    aproximaciones las cuales requieren m\'etodos espec\'ificos, como la homolog\'ia persistente,
+    para la extracci\'on de informaci\'on relevante. M\'as all\'a de la identificaci\'on
+    de informaci\'on topol\'ogica/geom\'etrica interesante y su visualizaci\'on e
+    interpretaci\'on, el desaf\'io en este paso es mostrar su relevancia, en particular su
+    estabilidad con respecto a las perturbaciones o la presencia de ruido en los datos de entrada.
+    Es por ello que entender el comportamiento estad\'istico de las propiedades inferidas es
+    tambi\'en una cuesti\'on importante.
+    
+    \item La informaci\'on topol\'ogica y geom\'etrica proporciona una nueva familia de
+    caracter\'isticos y descriptores de los datos. Estos pueden ser usados para entender mejor
+    los datos (en particular a trav\'es de visualizaci\'on) o pueden ser combinados con otros
+    tipos de caracter\'isticos para un an\'alisis posterior o tareas de aprendizaje autom\'atico.
+    Esta informaci\'on tambi\'en puede ser utilizada para dise\~{n}ar modelos bien ajustados para el
+    an\'alisis de datos o el aprendizaje autom\'atico. Mostrar el valor a\~{n}adido y complementario
+    (con respecto a otras caracter\'isticas) de la informaci\'on proporcionada por las
+    herramientas del ATD es un punto importante en este paso.
+    
+\end{enumerate}
+
+\section*{El An\'alisis Topol\'ogico de Datos y la Estad\'istica}
+
+Hasta hace poco, los aspectos te\'oricos del TDA y la inferencia topol\'ogica reca\'ian
+principalmente en acercamientos determin\'isticos. Estos acercamientos no tomaban en cuenta la
+naturaleza aleatoria de los datos y la variabilidad intr\'inseca de las cantidades topol\'ogicas
+que infieren. As\'i, la mayor\'ia de los m\'etodos correspondientes son de car\'acter explicativo,
+sin ser capaces de distinguir eficientemente entre informaci\'on y lo que normalmente es llamado
+``ruido topol\'ogico''.
+
+Un acercamiento estad\'istico al ATD implica considerar los datos como generados de una
+distribuci\'on desconocida y a su vez que las propiedades topol\'ogicas inferidas utilizando
+m\'etodos del ATD son vistos como estimadores de cantidades topol\'ogicas que describen un
+objeto subyacente. Bajo este acercamiento, el objeto desconocido usualmente corresponde al soporte
+de la distribuci\'on de los datos (o parte del mismo). Los objetivos principales de un acercamiento
+estad\'istico al an\'alisis topol\'ogico de datos pueden ser abreviados como la siguiente lista
+de problemas:
+
+\begin{enumerate}[label=\emph{T\'opico \arabic*:}]
+    \item Demostrar consistencia y estudiar la tasa de convergencia de los m\'etodos del ATD.
+    
+    \item Proporcionar regiones de confianza para caracter\'isticas topol\'ogicas y discutir la
+    significacia de las cantidades topol\'ogicas estimadas.
+    
+    \item Seleccionar escalas relevantes en las cuales el fen\'omeno topol\'ogico debe ser considerado,
+    en funci\'on de los datos observados.
+    
+    \item Lidiar con valores at\'ipicos y brindar m\'etodos robustos para el ATD.
+    
+\end{enumerate}
+
+\section*{Aplicaciones del An\'alisis Topol\'ogico de Datos en la Ciencia de Datos.}
+
+Desde el punto de vista de las aplicaciones, recientemente hay muchos resultados prometedores que han
+demostrado la eficacia de acercamientos topol\'ogicos y geom\'etricos en una multitud de campos, tales
+como la ciencia de materiales (Kramar et al., 2013 \cite{Kramar2013}; Nakamura
+et al., 2015 \cite{Nakamura2015}; Pike et al., 2020 \cite{Pike2020}), an\'alisis de
+formas 3D (Skraba et al., 2010 \cite{Skraba2010}; Turner et al., 2014b \cite{Turner2014b}), an\'alisis
+de im\'agenes (Qaiser et al., 2019 \cite{Qaiser2019}; Rieck et al., 2020 \cite{Rieck2020}), an\'alisis
+de series de tiempo multivariadas (Khasawneh y Munch, 2016 \cite{Khasawneh2016};
+Seversky et al., 2016 \cite{Seversky2016}; Umeda, 2017 \cite{Umeda2017}),
+medicina (Dindin et al., 2020 \cite{Dindin2020}), biolog\'ia (Yao et al., 2009 \cite{Yao2009}),
+gen\'omica (Carri\`ere y Rabad\'an, 2020 \cite{Carriere2020}), qu\'imica (Lee et al.,
+\cite{Lee2017}; Smith et al., 2021 \cite{Smith2021}), redes sensoriales (De Silva y Ghrist, 2007
+\cite{Silva2007}) y transportaci\'on (Li et al., 2019 \cite{Li2019}), entre otros. Dar una lista
+exhaustiva de las aplicaciones del ATD esta fuera del alcance de esta introducci\'on. Por otra parte,
+la mayor\'ia de los resultados del ATD son fruto de su combinaci\'on con otras t\'ecnicas de an\'alisis
+y aprendizaje. De esta manera vemos que clarificar la posici\'on y complementariedad del ATD con respecto
+a otros acercamientos y herramientas en la ciencia de datos es una cuesti\'on importante y un campo de
+investigaci\'on activo.
+
+As\'i, los objetivos generales de este documento son los siguientes. Primero, se intenta proporcionar
+a los analistas de datos con una breve pero exhaustiva introducci\'on a los fundamentos matem\'aticos
+y estad\'isticos del ATD. Con este prop\'osito, nos enfocamos en una selecci\'on de herramientas
+y t\'opicos, los complejos simplicales y su uso para el an\'alisis topol\'ogico de datos exploratorio,
+la inferencia geom\'etrica  y la homolog\'ia persistente, los cuales juegan un rol central en el ATD.
+Segundo, se apunta a demostrar como, gracias al reciente progreso del software, herramientas del ATD
+pueden ser f\'acilmente aplicadas en la ciencia de datos. En particular, mostraremos como la versi\'on
+de Python de la paqueter\'ia GUDHI permite una sencilla implementaci\'on y uso de las herramientas
+presentadas. Nuestro objetivo es proporcionar al analista de datos referencias relevantes de manera que
+se obtenga un comprensi\'on clara de los elementos b\'asicos del ATD y sea capaz de utilizar sus
+m\'etodos y software en un conjunto propio de problemas y datos.
+
+Otros estudios del ATD, complementarios a este trabajo, pueden ser encontrados en la literatura.
+Wasserman (2018) \cite{Wasserman2018} presenta una perspectiva estad\'istica al ATD, y se concentra, en
+particular, en las conexiones entre el ATD y el agrupamiento por densidad. Sizemore et al. (2019)
+\cite{Sizemore2019} propuso un estudio acerca de las aplicaciones del ATD a las neurociencias.
+Finalmente, Hensel et al. (2021) \cite{Hensel2021} presenta un resumen de las aplicaciones
+del ATD al aprendizaje autom\'atico.
