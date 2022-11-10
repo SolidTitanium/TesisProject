@@ -94,3 +94,14 @@ as\'i que la \'unica informaci\'on topol\'ogica no-trivial que brindan es su hom
 Para $r<a_{1}$, $F_{r}$ es vacio, pero para $r = a_{1}$, aparecen un primer componente conexo en $F_{a_{1}}$.
 La homolog\'ia persistente registra $a_{1}$ como la ``fecha de nacimiento'' de una componente conexa la codifica como un intervalo que comienza en $a_{1}$.
 Luego, $F_{r}$ permanece conexo hasta que $r$ toma el valor de $a_{2}$ donde una segunda componente conexa aparece.
+La homolog\'ia persitente registra esta nueva componente conexa creando un segundo intervalo que comienza en $a_{2}$.
+De manera similar, cuando $r$ alcanza el valor de $a_{3}$, una nueva componente conexa aparece y la homolog\'ia persistente crea otro intervalo comenzando en $a_{3}$.
+Cuando $r$ alcanza $a_{4}$, las dos componentes creadas en $a_{1}$ y $a_{3}$ se juntan para crear una sola componente conexa.
+En este paso, la homolog\'ia persistente sigue la regla de que la componente que muere es la m\'as reciente que ha aparecido en la filtraci\'on;
+As\'i, el intervalo que comenz\'o en $a_{3}$ termina en $a_{4}$,
+y el intervalo de persistencia que codifica el tiempo de vida de la componente nacida en $a_{3}$ es creado.
+Cuando $r$ alcanza $a_{5}$, como en el caso previo la componente nacida en $a_{2}$ muere y se crea el intervalo $\cpar{a_{2},a_{5}}$.
+El intervalo creado en $a_{1}$ permanece hasta el final de la filtraci\'on,
+dando lugar al intervalo $\cpar{a_{1},a_{6}}$ si la filtraci\'on se detiene en $a_{6}$,
+o bien, $\cpar{a_{1},\infty}$ si $r$ tiende a $+\infty$ (en cuyo caso la filtraci\'on se mantiene constante para $r>a_{6}$).
+El conjunto de intervalos obtenidos que codifican el tiempo de vida de diferentes caracteristicas homol\'ogicas a lo largo de la filtrac\'on es llamado el codigo de barras de persistenca de $f$.
