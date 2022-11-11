@@ -33,7 +33,7 @@ filtraciones com\'unmente usadas en el ATD suelen pertenecer a uno de los siguie
 Dado un subconjunto $\mathbb{X}$ de un espacio m\'etrico compacto $\cpar{M,\rho}$, las familias de
 complejos de Vietoris-Rips $\cpar{Rips_{r}\cpar{\mathbb{X}}}_{r\in\mathbb{R}}$ y los complejos de \v Cech
 $\cpar{Cech_{r}\cpar{\mathbb{X}}}_{r\in\mathbb{R}}$ son filtraciones\footnote{Aqu\'i consideramos
-$Rips_{r}\cpar{\mathbb{X}} = Cech_{r}\cpar{\mathbb{X}} = \varnothing$, si $r<0$}. Aquí, el par\'ametro
+$Rips_{r}\cpar{\mathbb{X}} = Cech_{r}\cpar{\mathbb{X}} = \varnothing$, si $r<0$}. Aqu\'i, el par\'ametro
 $r$ puede ser interpretado como la resoluci\'on con la que se considera el conjunto de datos $\mathbb{X}$.
 Por ejemplo, si $\mathbb{X}$, es una nube de puntos en $\mathbb{R}^{d}$, gracias al teorema del nervio,
 la filtraci\'on $\cpar{Cech_{r}\cpar{\mathbb{X}}}_{r\in\mathbb{X}}$ codifica la topolog\'ia de todo la
@@ -43,17 +43,6 @@ literatura para ser construidas sobre los datos, como el complejo testigo popula
 De Silva y Carlsson (2004)\cite{DeSilva2004}, las filtraciones de Rips con peso Buchet et al.
 (2015)\cite{Buchet2015b}, o las filtraciones DTM Anai et al. (2019)\cite{Anai2019} que nos permiten
 trabajar con conjuntos de datos con ruido o con datos at\'ipicos.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.85\linewidth]{./figures/Figura9.png}
-    \caption{
-        El c\'odigo de barras de persistencia y el diagrama de persistencia de la funci\'on
-        $f:\ccorch{0,1}\rightarrow\mathbb{R}$.
-    }
-    \label{fig:Figura 9}
-    \vspace{15pt}
-\end{figure}
 
 \section*{Filtraciones de Conjuntos Subnivel}
 
@@ -105,13 +94,56 @@ El intervalo creado en $a_{1}$ permanece hasta el final de la filtraci\'on,
 dando lugar al intervalo $\cpar{a_{1},a_{6}}$ si la filtraci\'on se detiene en $a_{6}$,
 o bien, $\cpar{a_{1},\infty}$ si $r$ tiende a $+\infty$ (en cuyo caso la filtraci\'on se mantiene constante para $r>a_{6}$).
 El conjunto de intervalos obtenidos que codifican el tiempo de vida de diferentes caracteristicas homol\'ogicas a lo largo de la filtrac\'on es llamado el codigo de barras de persistenca de $f$.
-Cada intervalo $\cpar{a,a'}$ puede ser representado en el plano $\mathbb{R}$ por el punto $\cpar{a,a'}$.
+Cada intervalo $\cpar{a,a'}$ puede ser representado en el plano $\mathbb{R}^{2}$ por el punto $\cpar{a,a'}$.
 El conjunto de puntos resultante es llamado el diagrama de persistencia de $f$.
 Es de notar que la funcion puede tener multiples copias del mismo intervalo en su codigo de barras de persitencia.
 Como consecuencia, el diagrama de persistenca de $f$ es un multiconjunto donde cada punto tiene una multiplicidad entera asociada.
 Finalmente, por razones t\'ecnicas que seran claras m\'as adelante,
 se a\~{n}aden al diagrama de persistencia todos los puntos de la diagonal $\Delta = \cllav{\cpar{b,d}: b=d}$ con multiplicidad infinita.
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\linewidth]{./figures/Figura9.png}
+    \caption{
+        El c\'odigo de barras de persistencia y el diagrama de persistencia de la funci\'on
+        $f:\ccorch{0,1}\rightarrow\mathbb{R}$.
+    }
+    \label{fig:Figura 9}
+    \vspace{15pt}
+\end{figure}
+
 \section*{Ejemplo 2}
 
-Inicio EJ2
+Sea $f: M\rightarrow \mathbb{R}$ la funci\'on eb la Figura \ref{fig:Figura 10},
+donde $M$ es una superficie de dos dimensiones homeomorfa a un toro,
+y sea $F_{r} = f^{-1}\cpar{\cpar{-\infty,r}}_{r\in \mathbb{R}}$ la filtraci\'on del conjunto subnivel de $f$.
+La homolog\'ia persistente cero dimensional se calcula como en el ejemplo anterior,
+lo cual genera las barras rojas en el codigo de barras de persistencia.
+En este caso los subniveles tambi\'en almacenan informaci\'on acerca de caracter\'isticas homol\'ogicas uno dimensionales.
+Cuando $r$ alcanza la altura $a_{1}$,
+los conjuntos subnivel $F_{r}$ que eran homeomorfos a dos discos se vuelven homeomorfos a la uni\'on disjunta de un disco y un \'anulo,
+creando un primer ciclo homologo a $\sigma_{1}$ en la Figura \ref{fig:Figura 10}.
+El nacimiento de este uno-ciclo es representado por un intervalo (en azul) que comienza en $a_{1}$.
+Similarmente, cuando $r$ alcanza $a_{2}$, un segundo ciclo, homologo a $\sigma_{2}$, es creado,
+dando lugar al comienzo de un nuevo intervalo de persistencia.
+Estos dos ciclos nunca son rellenos (abarcan $H_{1}\cpar{M}$) de manera que los intervalos que les corresponden continuan por el resto de la filtraci\'on.
+Cuando $r$ alcanza $a_{3}$, un nuevo ciclo es creado, el cual se rellena en $a_{4}$,
+lo cual genera el intervalo de persistencia $\cpar{a_{3},a_{4}}$.
+Esta vez, la filtraci\'on del conjunto subnivel da lugar a dos codigos de barras,
+uno par la homolog\'ia cero dimensional (mostrado en rojo) y otro para la homolog\'ia uno dimensional (mostrado en azul).
+Estos dos codigos de barras pueden ser representados de manera equivalente como diagramas en el plano. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\linewidth]{./figures/Figura10.png}
+    \caption{
+        El codigo de barras de persistencia y el diagrama de persistencia de la funci\'on altura
+        (proyecci\'on en el eje $z$) definida en una superficie en $\mathbb{R}^{3}$.
+    }
+    \label{fig:Figura 10}
+    \vspace{15pt}
+\end{figure}
+
+\section*{Ejemplo 3}
+
+Inicia EJ3
