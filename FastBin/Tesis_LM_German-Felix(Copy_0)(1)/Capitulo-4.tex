@@ -96,7 +96,7 @@ o bien, $\cpar{a_{1},\infty}$ si $r$ tiende a $+\infty$ (en cuyo caso la filtrac
 El conjunto de intervalos obtenidos que codifican el tiempo de vida de diferentes caracteristicas homol\'ogicas a lo largo de la filtrac\'on es llamado el codigo de barras de persistenca de $f$.
 Cada intervalo $\cpar{a,a'}$ puede ser representado en el plano $\mathbb{R}^{2}$ por el punto $\cpar{a,a'}$.
 El conjunto de puntos resultante es llamado el diagrama de persistencia de $f$.
-Es de notar que la funcion puede tener multiples copias del mismo intervalo en su codigo de barras de persitencia.
+Es de notar que la funci\'on puede tener multiples copias del mismo intervalo en su codigo de barras de persitencia.
 Como consecuencia, el diagrama de persistenca de $f$ es un multiconjunto donde cada punto tiene una multiplicidad entera asociada.
 Finalmente, por razones t\'ecnicas que seran claras m\'as adelante,
 se a\~{n}aden al diagrama de persistencia todos los puntos de la diagonal $\Delta = \cllav{\cpar{b,d}: b=d}$ con multiplicidad infinita.
@@ -146,4 +146,59 @@ Estos dos codigos de barras pueden ser representados de manera equivalente como 
 
 \section*{Ejemplo 3}
 
-Inicia EJ3
+En este \'ultimo, consideramos la filtraci\'on dada por la uni\'on de bolas
+(que crecen linealmente)
+centradas en el conjunto de puntos finitos $C$ en la Figura \ref{fig:Figura 11}.
+Notese que esta es la filtraci\'on del conjunto subnivel de la funci\'on distancia a $C$,
+y gracias al teorema del nervio,
+esta filtraci\'on es homot\'opicamente equivalente a la filtraci\'on de \v Cech construida sobre $C$.
+La Figura \ref{fig:Figura 11} muestra varios conjuntos subnivel de la filtraci\'on de la siguiente manera:
+
+\begin{enumerate}[label=\alph*)]
+    \item Para radio $r=0$, la uni\'on de bolas se reduce al conjunto de puntos finito inicial,
+    cada uno de ellos correspondiendo a una componente conexa;
+    se comienza un intervalo por cada una de estas componentes en $r=0$.
+
+    \item Algunas de las bolas comienzan a superponerse,
+    resultando en la muerte de algunas de las componentes conexas que se han juntando entre s\'i;
+    el diagrama de persistencia registra estas muertes, poniendo fin a los intervalos correspondientes.
+    
+    \item M\'as componentes conexas se han juntado, dejando una sola componente conexa,
+    y as\'i, todos los intervalos asociados a caracter\'isticas cero dimensionales terminan,
+    con la excepci\'on de los que corresponden a las componentes restantes;
+    dos nuevas caracter\'isticas uno dimensionales han aparecido,
+    lo cual resulta en dos nuevos intervalos (en azul) que comienzan en ese valor de $r$.
+    
+    \item Una de los dos ciclos uno dimensionales se ha rellenado,
+    resultando en su muerte en la filtraci\'on y en el fin del intervalo correspondiente.
+    
+    \item Todas la componenetes uno dimensionales han muerto, dejando un \'unico intervalo rojo en el codigo de barras.
+    como en ejemplos anteriores, el codigo de barras puede ser representado como un diagrama de persistencia,
+    donde cada intervalo $\cpar{a,b}$ es representa por un punto en $\mathbb{R}^{2}$ de coordenadas correspondientes.
+    
+\end{enumerate}
+
+Intuitivamente afirmamos que entre m\'as largo sea un intervalo en el codigo de barras,
+o bien, equivalentemente,
+entre m\'as alejado est\'e un punto de la diagonal en el diagrama correspondiente,
+m\'as persistente, y por tanto, relevante, es la propiedad homol\'ogica que le corresponde a trav\'es de la filtraci\'on.
+Es de notar tambi\'en que para un radio $r$ dado, el $k$.-\'esimo n\'umero de Betti de la uni\'on de bolas en cuesti\'on,
+es igual al n\'umero de intervalos de persistencia correspondiendo a caracter\'isticas homol\'ogicas $k$ dimensionales que contienen a $r$.
+As\'i, el diagrama de persistencia puede ser visto como una firma topol\'ogica que codifica la homolo\'gia de la uni\'on de bolas abiertas,
+para todos los radios, as\'i como su evoluci\'on a trav\'es de los valores que toma $r$.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\linewidth]{./figures/Figura10.png}
+    % \caption{
+    %     Placeholder
+    % }
+    \label{fig:Figura 11}
+    \vspace{15pt}
+\end{figure}
+
+\newpage
+
+\section{Modulos y Diagramas de Persistencia}
+
+Inicia nueva secci\'on.
